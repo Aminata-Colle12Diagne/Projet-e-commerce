@@ -1,0 +1,36 @@
+.respire{
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: 1.5rem;
+    color: black;
+    
+}
+
+.lesIconsNavbar{
+    padding: 2;
+}
+.navpricipale a{
+    color: black;
+    font-size: 13px;
+    }
+    .linkproduit .nav-link{
+       color: "#248332";
+       border-Bottom: "2px solid transparent";
+        border-bottom-width: 1px
+       
+    }
+    /* .linkproduit .nav-link:hover{
+      border-Bottom-Width: 1% ;
+    } */
+    .buttonPartenaire {
+        background: #faf5ec;
+        margin-left: 8px;
+        transition: background 0.3s ease; /* Ajoute une transition fluide sur le changement de couleur de fond */
+      }
+      
+      .buttonPartenaire:hover {
+        background: orange; /* Couleur de fond au survol */
+      }
+      /* .linkproduit{
+        padding-top: 6rem;
+      } */
+  
