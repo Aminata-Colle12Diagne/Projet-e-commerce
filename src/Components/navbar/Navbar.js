@@ -3,7 +3,7 @@ import './Navbar.css';
 import { Link } from 'react-router-dom';
 function Navbar(props) {
     return (
-        <div className='header fixed-top'>
+        <div className='header fixed-top '>
             <nav class="navbar navbar-expand-lg navbar-light bg-light ">
   <div class="container-fluid">
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
@@ -12,7 +12,7 @@ function Navbar(props) {
     <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <div className="nav-item">
-        <button type="button" className="btn text-white" style={{background: "#007266"}}> <i class="fa-solid fa-envelope"></i>  Je m'abonne</button>
+        <Link  to="/abonne"type="button" className="btn text-white" style={{background: "#007266"}}> <i class="fa-solid fa-envelope"></i>  Je m'abonne</Link>
         </div>
         <li class="nav-item  partenaire">
         <button type="button text-white" className="btn buttonPartenaire" >Devenir Partenaire</button>
@@ -28,13 +28,13 @@ function Navbar(props) {
      
       <div className='lesIconsNavbar d-flex justify-content-end ml-2'>
     <div className="search m-2">
-        <Link to="" className="nav-link"><i className="fa-solid fa-magnifying-glass"></i></Link>
+        <Link to="/search" className="nav-link"><i className="fa-solid fa-magnifying-glass"></i></Link>
     </div>
     <div className="search m-2">
-    <Link to="" className="nav-link"><i class="fa-regular fa-circle-question"></i></Link>
+    <Link to="/hepl" className="nav-link"><i class="fa-regular fa-circle-question"></i></Link>
     </div>
     <div className="search m-2">
-        <Link to="" className="nav-link"><i className="fa-solid fa-user-large"></i></Link>
+        <Link to="/connexion" className="nav-link"><i className="fa-solid fa-user-large"></i></Link>
     </div>
     <div className="search m-2">
       <Link to="" className="nav-link">    <i class="fa-solid fa-cart-shopping"></i>  </Link>
@@ -47,7 +47,7 @@ function Navbar(props) {
     </div>
   </div>
 </nav>
-<div className='row linkproduit'>
+<div className='row linkproduit bg-white'>
   <nav className="nav nav-pills navpricipale nav-fill">
     <Link to="/" className="nav-link" onMouseOver={(e) => e.target.style.borderBottom = "1px solid #248332"} onMouseOut={(e) => e.target.style.borderBottom = "1px solid transparent"}>TOUS LES PRODUITS</Link>
     <Link to="/DEODORANTS" className="nav-link" onMouseOver={(e) => e.target.style.borderBottom = "1px solid #248332"} onMouseOut={(e) => e.target.style.borderBottom = "1px solid transparent"}>DEODORANTS</Link>

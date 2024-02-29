@@ -1,0 +1,8 @@
+.rowhelpBonjour{
+    background-image: url("../assets/img/help1.jpg");
+    background-size: cover;
+    height: 15rem;
+}
+.comment input{
+    margin-left: 25rem;
+}

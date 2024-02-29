@@ -10,3 +10,26 @@
 .solides{
     font-weight: bolder;
 }
+.rowNaturel{
+    background-image: url("../assets/img/natureldeo.jpg");
+    top: 0;
+    left: 0;
+
+}
+.h5-body{
+    font-size: 65px;
+    line-height: 1;
+    font-family: var(--font-heading-family);
+    font-weight: 700;
+    color: #202020;
+}
+.formules p{
+    font-size: 13px;
+    /* line-height: 23px; */
+    font-family: var(--font-heading-family);
+    letter-spacing: .26px;
+}
+.formules{
+    margin: 2rem;
+}
+  

@@ -9,6 +9,12 @@ import Visages from './Components/visage/Visages';
 import Corps from './Components/corps/Corps';
 import Parrainage from './Components/parrainages/Parrainage';
 import { BrowserRouter as Router, Route,Routes, Switch, BrowserRouter } from 'react-router-dom';
+import Connexion from './Components/authentification/Connexion';
+import Login from './Components/authentification/Login';
+import SingUp from './Components/authentification/SingUp';
+import Help from './Components/help/Help';
+import Search from './Components/search/Search';
+import Abonne from './Components/abonne/Abonne';
 
 
 function App() {
@@ -16,6 +22,7 @@ function App() {
     <Router>
     <div className="App">
       <Navbar />
+      {/* <Connexion/> */}
       <Routes>
         {/* <Route path="/" element={<Produits />} /> */}
         <Route path="/" exact element={<TousProduits />} />
@@ -25,6 +32,14 @@ function App() {
         <Route path="/VISAGE" element={<Visages />} />
         <Route path="/CORPS" element={<Corps />} />
         <Route path="/PARRAINAGE" element={<Parrainage />} />
+        <Route path="/connexion" element={<Connexion />} />
+        <Route path="/" element={<SingUp />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/hepl" element={<Help />} />
+        <Route path="/search" element={<Search />} />
+        <Route path="/abonne" element={<Abonne/>} />
+    
+
       </Routes>
     </div>
   </Router>

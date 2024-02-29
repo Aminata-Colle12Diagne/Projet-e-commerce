@@ -1,0 +1,13 @@
+.rowCheveux{
+background-image: url("../assets/img/cheveux\ 10.jpg");
+background-repeat: no-repeat;
+top: 0;
+left: 0;
+background-size: cover;
+}
+.text-uppercase{
+    font-weight: bold;
+}
+.frequents{
+    margin-top: 2rem ;
+}

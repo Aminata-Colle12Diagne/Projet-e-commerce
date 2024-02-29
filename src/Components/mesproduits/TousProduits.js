@@ -13,11 +13,192 @@ import monze from '../assets/img/onze.jpg'
 import mdoux from '../assets/img/doux.jpg'
 import mimages14 from '../assets/img/image14.jpg'
 import mimages15 from '../assets/img/images15.jpg'
+import { addDoc, collection, getFirestore } from 'firebase/firestore';
+import db from '../../firebaseConfig';
+// import fireBd from '../firebaseConfig'
+// import auth from '../firebaseConfig';
 
 
 
 
 function TousProduits(props) {
+
+const db = getFirestore();
+const ajouterProduit = async(produit) =>{
+try {
+  const docRef = await addDoc(collection(db, 'MesProduits'), produit);
+  console.log('Document written with ID: ', docRef.id);
+
+} catch (e) {
+  console.error('Error adding document: ', e);
+
+}
+}
+
+const handleAddProductClick = (produit) => {
+  ajouterProduit(produit);
+};
+
+  const produitAjouter = [
+    {
+      imageUrl: mdeuxieme,
+      titre: 'Déodorant Solide Certifié Bio efficace 48h Fleur de Coton',
+      description: '48h chrono',
+      prix: 32.90,
+      avis: 3297,
+      note: 5,
+    },
+    {
+      imageUrl: mdeuxieme,
+      titre: 'Déodorant Roll-on Fraicheur 24h de coton',
+      description: 'Efficacite prouvee',
+      prix: 10.90,
+      avis: 955,
+      note: 5,
+    },
+    {
+      imageUrl: mtroixieme,
+      titre: 'Soin Nettoyant Visage Solide',
+      description: "+27% d' hydratation",
+      prix: 10.90,
+      avis: 701,
+      note: 5,
+    },
+    {
+      imageUrl: mquatrieme,
+      titre: 'Soin Exfoliant Corps Solide',
+      description: "40 nuances de grains",
+      prix: 10.90,
+      avis: 701,
+      note: 5,
+    },
+    {
+      imageUrl: mcimquieme,
+      titre: 'Deodorant Solides Certifie Bio efficase 48h Douceur Monoi',
+      description: "Deo et jamais des bas",
+      prix: 11.90,
+      avis: 255,
+      note: 5,
+    },
+    {
+      imageUrl: msixieme,
+      titre: '2 Shampionpoind Solide Fraicheur Trropical & Lait Amande',
+      description: "Attention ca marche",
+      prix: 18.53,
+      avis: 2310,
+      note: 5,
+    },
+    {
+      imageUrl: mseptieme,
+      titre: 'Gel-Greme Visage Hydratant 50ml',
+      description: "+48% d'hydaratation immediate",
+      prix: 16.90,
+      avis: 2615,
+      note: 5,
+    },
+    {
+      imageUrl: mhuitieme,
+      titre: 'Deodorant Roll-on fraicheur 24h Douceur Monoi',
+      description: "Eficacite prouve",
+      prix: 10.90,
+      avis: 955,
+      note: 5,
+    },
+    {
+      imageUrl: mneuvieme,
+      titre: 'Les 2 deodorants Solides Certifies Bio, efficacite 48h',
+      description: "48h chrono",
+      prix: 21.90,
+      avis: 3379,
+      note: 5,
+    },
+    {
+      imageUrl: mdixieme,
+      titre: 'Duo Soin Mains et levres',
+      description: "Le duo de choc",
+      prix: 12.90,
+      avis: 37,
+      note: 5,
+    },
+    // col 11
+    {
+      imageUrl: monze,
+      titre: 'Les 2 deodorants Roll-on Fraicheur 24h',
+      description: "Efficacite prouve",
+      prix: 18.53,
+      avis: 955,
+      note: 5,
+    },
+    // coll 12
+    {
+      imageUrl: mdoux,
+      titre: 'Baune Corps Nourrissant Rechergeable 200ml',
+      description: "Du baune au corps",
+      prix: 22.90,
+      avis: 186,
+      note: 5,
+    },
+    // col 13
+    {
+      imageUrl: mtroixieme,
+      titre: 'Duo Soin Mains et levres',
+      description: "Le duo de choc",
+      prix: 12.90,
+      avis: 37,
+      note: 5,
+    },
+    // col 14
+    {
+      imageUrl: mimages14,
+      titre: 'Les 2 deodorants Solides Certifies efficaite 48h',
+      description: "48h chrono",
+      prix: 21.90,
+      avis: 3379,
+      note: 5,
+    },
+    // col 15
+    {
+      imageUrl: mimages15,
+      titre: 'Baune leves Nourrissant Naturel',
+      description: "un petit nouveau",
+      prix: 5.90,
+      avis: 111,
+      note: 5,
+    },
+    // col 16
+    {
+      imageUrl: mdixieme,
+      titre: 'Les 2 deodorants Solides Certifies efficaite 48h',
+      description: "48h chrono",
+      prix: 21.90,
+      avis: 3379,
+      note: 5,
+    },
+    // col 17
+    {
+      imageUrl: mhuitieme,
+      titre: 'Les deux savons Surgras',
+      description: "Duo(tres) solide",
+      prix: 10.90,
+      avis: 689,
+      note: 5,
+    },
+    // col 18
+    {
+      imageUrl: mcimquieme,
+      titre: 'Dentifrice Fraicheur Intense',
+      description: "Nettoie,fortifie,protege",
+      prix: 5.90,
+      avis: 293,
+      note: 5,
+    },
+    
+  ]
+
+
+
+
+
     return (
         <div className='container-fluid produit fixed' id='TousProduits'>
 
@@ -32,457 +213,48 @@ function TousProduits(props) {
             {/* PREMIERE ROW */}
             <div className="row acceuill premiereRow">
                 <p><strong>Accueil- Tous Les Produits</strong></p>
-                <div class="row  row-cols-md-4 g-3">
-
-                <div class="col-md-3" style={{position: "relative"}}>
-    <div class="card ">
-      <img src={mdeuxieme} class="card-img-top" alt="..."/>
-      <div className="satisfaite" style={{ background: "#c5e0d9", position: "absolute" }}>
-        <p className='rem'>Satisfait ou rembourse</p>
-      </div>
-      <div class="card-body">
-        <h5 class="card-title">Déodorant Solide Certifie Bio efficase 48h Fleur de Coton</h5>
-        <p class="card-text"><span>Best-seller</span></p>
-      </div>
-      <div className='best d-flex'>
-        <div className="monet ">
-            <p>11,80£</p>
-        </div>
-        <div className="avis">
-            <p>2630 avis <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></p>
-        </div>
-      </div>
-      <div class="">
-      <button type="button" className="btn text-white" style={{width: "16.5rem", height: "2.5rem", background: "#007266"}}>Ajouter</button>
-      </div>
-    </div>
-  </div>
-
-  <div class="col-md-3">
-    <div class="card ">
-      <img src={mdeuxieme} class="card-img-top" alt="..."/>
-      <div class="card-body">
-        <h5 class="card-title">Déodorant Roll-on Fraicheur 24h Fleur de coton</h5>
-        <p class="card-text"><span>Efficacite prouve</span></p>
-      </div>
-      <div className='best d-flex'>
-        <div className="monet ">
-            <p>10,90£</p>
-        </div>
-        <div className="avis">
-            <p>902 avis <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></p>
-        </div>
-      </div>
-      <div class="">
-      <button type="button" className="btn text-white" style={{width: "16.5rem", height: "2.5rem", background: "#007266"}}>Ajouter</button>
-      </div>
-    </div>
-  </div>
-  <div class="col-md-3">
-    <div class="card h-100">
-      <img src={mtroixieme} class="card-img-top" alt="..."/>
-    
-      <div class="card-body">
-        <h5 class="card-title">Soin Nettoyant Visage solide</h5>
-        <p class="card-text"><span>+27% d'hydratation</span></p>
-      </div>
-      <div className='best d-flex'>
-        <div className="monet ">
-            <p>10,90£</p>
-        </div>
-        <div className="avis">
-            <p>898 avis <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></p>
-        </div>
-      </div>
-      <div class="">
-      <button type="button" className="btn text-white" style={{width: "16.5rem", height: "2.5rem", background: "#007266"}}>Ajouter</button>
-      </div>
-    </div>
-  </div>
-  
-  <div class="col-md-3" style={{position: "relative"}}>
-    <div class="card  h-100 quatriemeimage">
-      <img src={mquatrieme} classN="card-img-top " alt="..."/>
-      <div className="satisfaite" style={{ background: "#c5e0d9", position: "absolute" }}>
-        <p className='rem' >Satisfait ou rembourse</p>
-      </div>
-      <div class="card-body">
-        <h5 class="card-title">Soin Exfoliant Corps Solide</h5>
-        <p class="card-text"><span>40 nuances de grains</span></p>
-      </div>
-      <div className='best d-flex'>
-        <div className="monet ">
-            <p>10,90£</p>
-        </div>
-        <div className="avis">
-            <p>701 avis <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></p>
-        </div>
-      </div>
-      <div class="">
-      <button type="button" className="btn text-white" style={{width: "16.5rem", height: "2.5rem", background: "#007266"}}>Ajouter</button>
-      </div>
-    </div>
-  </div>
-  
- 
-  
-</div>
-            </div>
-{/* deuXieme ROW */}
-            <div className="row acceuill deuxiemeRow">
-                <div class="row  row-cols-md-4 g-3">
-
-  <div class="col-md-3" style={{ position: "relative" }}>
-    <div class="card  h-100 cinquiemeimage">
-      <img src={mcimquieme} class="card-img-top" alt="..."/>
-      <div className="satisfaite" style={{ background: "#c5e0d9", position: "absolute" }}>
+                <div className="row">
+      {produitAjouter.map((produit, index) => (
+        <div key={index} className="col-md-3" style={{ position: "relative" }}>
+          <div className="card  custom-card">
+            <img src={produit.imageUrl} className="card-img-top" alt={produit.titre} style={{ objectFit: "cover", height: "50%" }}/>
+            <div className="satisfaite" style={{ background: "#c5e0d9", position: "absolute" }}>
         <p >Satisfait ou rembourse</p>
       </div>
-      <div class="card-body">
-        <h5 class="card-title">Les 3 Deodorants Solides Certifies, efficacite 48h</h5>
-        <p class="card-text"><span>Deo et jamais des bas</span></p>
-      </div>
-      <div className='best d-flex'>
-        <div className="monet ">
-            <p>33,90£</p>
-        </div>
-        <div className="avis">
-            <p>3297 avis <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></p>
-        </div>
-      </div>
-      <div class="">
-      <button type="button" className="btn text-white" style={{width: "16.5rem", height: "2.5rem", background: "#007266"}}>Ajouter</button>
-      </div>
-    </div>
-  </div>
-
-  <div class="col-md-3" style={{ position: "relative" }}>
-    <div class="card h-100">
-      <img src={msixieme} class="card-img-top" alt="..." style={{ background: "#faf5ec"}}/>
-      <div className="satisfaite" style={{ background: "#c5e0d9", position: "absolute" }}>
-        <p >Satisfait ou rembourse</p>
-      </div>
-      <div class="card-body">
-        <h5 class="card-title">Déodorant Solide Certifie Bio efficase 48h Douceur Monoi</h5>
-        <p class="card-text"><span>Deodorant jamais des bas</span></p>
-      </div>
-      <div className='best d-flex'>
-        <div className="monet ">
-            <p>11,90£</p>
-        </div>
-        <div className="avis">
-            <p>240 avis <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></p>
-        </div>
-      </div>
-      <div class="">
-      <button type="button" className="btn text-white" style={{width: "16.5rem", height: "2.5rem", background: "#007266"}}>Ajouter</button>
-      </div>
-    </div>
-  </div>
-  <div class="col-md-3" style={{ position: "relative" }}>
-    <div class="card ">
-      <img src={mseptieme} class="card-img-top" alt="..."/>
-      <div className="satisfaite" style={{ background: "#c5e0d9", position: "absolute" }}>
-        <p >Victoire de la Beaute</p>
-      </div>
-      <div class="card-body">
-        <h5 class="card-title">2 Shampoings Solides Fraicheur Tropiacale & Lait d'Amande</h5>
-        <p class="card-text"><span>Attention ca mouse</span></p>
-      </div>
-      <div className='best d-flex'>
-        <div className="monet ">
-            <p>18,53£</p>
-        </div>
-        <div className="avis">
-            <p>2306 avis <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></p>
-        </div>
-      </div>
-      <div class="">
-      <button type="button" className="btn text-white" style={{width: "16.5rem", height: "2.5rem", background: "#007266"}}>Ajouter</button>
-      </div>
-    </div>
-  </div>
-  <div class="col-md-3">
-    <div class="card h-100 quatriemeimage">
-      <img src={mhuitieme} classN="card-img-top " alt="..."/>
-      <div class="card-body">
-        <h5 class="card-title">Gel-Creme Visage Hydratant 50ml</h5>
-        <p class="card-text"><span>+48% d'hydratation immediate</span></p>
-      </div>
-      <div className='best d-flex'>
-        <div className="monet ">
-            <p>16,90£</p>
-        </div>
-        <div className="avis">
-            <p>2610 avis <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></p>
-        </div>
-      </div>
-      <div class="">
-      <button type="button" className="btn text-white" style={{width: "16.5rem", height: "2.5rem", background: "#007266"}}>Ajouter</button>
-      </div>
-    </div>
-  </div>
-  
- 
-  
+            <div className="card-body">
+              <hp className="card-title">{produit.titre}</hp>
+              <p className="card-text">{produit.description}</p>
+              <div className='best d-flex'>
+              <p className="card-text monet"> {produit.prix} €</p>
+              <p className="card-text avis"> {produit.avis}</p>
+              <p className="card-text">{Array.from({ length: produit.note }).map((_, index) => (
+    <i key={index} className="fa-solid fa-star"></i>
+  ))}
+  </p>
+              </div>
+              <button
+                type="button"
+                className="btn text-white"
+                style={{ width: "16.5rem", height: "2.5rem", background: "#007266" }}
+                onClick={() => handleAddProductClick(produit)}
+              >
+                Ajouter
+              </button>
             </div>
-            </div>
-            {/* TROIXIEME ROW */}
+          </div>
+        </div>
+      ))}
 
-            <div className="row acceuill troixiemRow">
-                <div class="row  row-cols-md-4 g-3">
 
-  <div class="col-md-3">
-    <div class="card ">
-      <img src={mneuvieme} class="card-img-top" alt="..."/>
-      <div class="card-body">
-        <h5 class="card-title">Déodorant Roll-on Fraicheur 24h Douceur Monoi</h5>
-        <p class="card-text"><span>Eficacitee prouve</span></p>
-      </div>
-      <div className='best d-flex'>
-        <div className="monet ">
-            <p>10,90£</p>
-        </div>
-        <div className="avis">
-            <p>902 avis <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></p>
-        </div>
-      </div>
-      <div class="">
-      <button type="button" className="btn text-white" style={{width: "16.5rem", height: "2.5rem", background: "#007266"}}>Ajouter</button>
-      </div>
-    </div>
-  </div>
 
-  <div class="col-md-3" style={{ position: "relative" }}>
-    <div class="card">
-      <img src={mdixieme} class="card-img-top" alt="..."/>
-      <div className="satisfaite" style={{ background: "#c5e0d9", position: "absolute" }}>
-        <p >Satisfait ou rembourse</p>
-      </div>
-      <div class="card-body">
-        <h5 class="card-title">Les deux Deodoorants Solides Certifies Bio, efficacite 48h</h5>
-        <p class="card-text"><span>48 chrono</span></p>
-      </div>
-      <div className='best d-flex'>
-        <div className="monet ">
-            <p>21,90</p>
-        </div>
-        <div className="avis">
-            <p>3297 avis <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></p>
-        </div>
-      </div>
-      <div class="">
-      <button type="button" className="btn text-white" style={{width: "16.5rem", height: "2.5rem", background: "#007266"}}>Ajouter</button>
-      </div>
+      
     </div>
-  </div>
-  <div class="col-md-3" style={{ position: "relative" }}>
-    <div class="card h-100">
-      <img src={monze} class="card-img-top" alt="..."/>
-      <div className="satisfaite" style={{ background: "#c5e0d9", position: "absolute" }}>
-        <p >Nouveaute</p>
-      </div>
-      <div class="card-body">
-        <h5 class="card-title">Duo Soin Mains et Levres</h5>
-        <p class="card-text"><span>Le duo de choc</span></p>
-      </div>
-      <div className='best d-flex'>
-        <div className="monet ">
-            <p>12,90£</p>
-        </div>
-        <div className="avis">
-            <p>29 avis <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></p>
-        </div>
-      </div>
-      <div class="">
-      <button type="button" className="btn text-white" style={{width: "16.5rem", height: "2.5rem", background: "#007266"}}>Ajouter</button>
-      </div>
-    </div>
-  </div>
-  <div class="col-md-3" style={{ position: "relative" }}>
-    <div class="card h-100">
-      <img src={mdoux} class="card-img-top" alt="..."/>
-      <div className="satisfaite" style={{ background: "#c5e0d9", position: "absolute" }}>
-        <p >Edition limite</p>
-      </div>
-      <div class="card-body">
-        <h5 class="card-title">Les 5 deodorants Solides Certifies bio efficacite 48h</h5>
-        <p class="card-text"><span>1 ans et demi de deodorant</span></p>
-      </div>
-      <div className='best d-flex'>
-        <div className="monet ">
-            <p>14,60£</p>
-        </div>
-        <div className="avis">
-            <p>3297 avis <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></p>
-        </div>
-      </div>
-      <div class="">
-      <button type="button" className="btn text-white" style={{width: "16.5rem", height: "2.5rem", background: "#007266"}}>Ajouter</button>
-      </div>
-    </div>
-  </div>
   
- 
-  
-</div>
-            </div>
 
-            {/* QUATRIME ROW */}
-            <div className="row acceuill quatriemeRow">
-                <div class="row  row-cols-md-4 g-3">
-
-                <div class="col-md-3" style={{ position: "relative" }}>
-    <div class="card ">
-      <img src={mneuvieme} class="card-img-top" alt="..."/>
-      <div className="satisfaite" style={{ background: "#c5e0d9", position: "absolute" }}>
-        <p >+15</p>
-      </div>
-      <div class="card-body">
-        <h5 class="card-title">Les 2 deodorants Roll-on Fraicheur 24h</h5>
-        <p class="card-text"><span>Efficacite prouvee</span></p>
-      </div>
-      <div className='best d-flex'>
-        <div className="monet ">
-            <p>18,53£</p>
-        </div>
-        <div className="avis">
-            <p>902 avis <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></p>
-        </div>
-      </div>
-      <div class="">
-      <button type="button" className="btn text-white" style={{width: "16.5rem", height: "2.5rem", background: "#007266"}}>Ajouter</button>
-      </div>
-    </div>
+   
   </div>
 
-  <div class="col-md-3">
-    <div class="card ">
-      <img src={mimages14} class="card-img-top" alt="..."/>
-     
-      <div class="card-body">
-        <h5 class="card-title">Baume Corps Nourrissant Rechargeable 200ml</h5>
-        <p class="card-text"><span>Du baume au corps</span></p>
-      </div>
-      <div className='best d-flex'>
-        <div className="monet ">
-            <p>22,90£</p>
-        </div>
-        <div className="avis">
-            <p>182avis <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></p>
-        </div>
-      </div>
-      <div class="">
-      <button type="button" className="btn text-white" style={{width: "16.5rem", height: "2.5rem", background: "#007266"}}>Ajouter</button>
-      </div>
-    </div>
-  </div>
-  <div class="col-md-3" style={{ position: "relative" }}>
-    <div class="card h-100">
-      <img src={mneuvieme} class="card-img-top" alt="..."/>
-      <div className="satisfaite" style={{ background: "#c5e0d9", position: "absolute" }}>
-        <p >New</p>
-      </div>
-      <div class="card-body">
-        <h5 class="card-title">Les 2 Deodorants Solides Certifies efficacite 48h</h5>
-        <p class="card-text"><span>48h chrono</span></p>
-      </div>
-      <div className='best d-flex'>
-        <div className="monet ">
-            <p>21,90£</p>
-        </div>
-        <div className="avis">
-            <p>3297 avis <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></p>
-        </div>
-      </div>
-      <div class="">
-      <button type="button" className="btn text-white" style={{width: "16.5rem", height: "2.5rem", background: "#007266"}}>Ajouter</button>
-      </div>
-    </div>
-  </div>
-  <div class="col-md-3" style={{ position: "relative" }}>
-    <div class="card ">
-      <img src={mimages15} class="card-img-top" alt="..."/>
-      <div className="satisfaite" style={{ background: "#c5e0d9", position: "absolute" }}>
-        <p >New</p>
-      </div>
-      <div class="card-body">
-        <h5 class="card-title">Baume Levres Nourrissant Naturel</h5>
-        <p class="card-text"><span>Un petit nouveau</span></p>
-      </div>
-      <div className='best d-flex'>
-        <div className="monet ">
-            <p>15,90£</p>
-        </div>
-        <div className="avis">
-            <p>297 avis <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></p>
-        </div>
-      </div>
-      <div class="">
-      <button type="button" className="btn text-white" style={{width: "16.5rem", height: "2.5rem", background: "#007266"}}>Ajouter</button>
-      </div>
-    </div>
-  </div>
-  
- 
-  
-</div>
-            </div>
-            {/* CINQUIEME ROW */}
-            <div className="row acceuill cinquiemeRow">
-                <div class="row  row-cols-md-4 g-3">
 
-                <div class="col-md-3" style={{ position: "relative" }}>
-    <div class="card ">
-      <img src={mneuvieme} class="card-img-top" alt="..."/>
-      <div className="satisfaite" style={{ background: "#c5e0d9", position: "absolute" }}>
-        <p >Satisfait ou rembourse</p>
-      </div>
-      <div class="card-body">
-        <h5 class="card-title">Déodorant Solide Certifie Bio efficase 48h Fleur de Coton</h5>
-        <p class="card-text"><span>48h chrono</span></p>
-      </div>
-      <div className='best d-flex'>
-        <div className="monet ">
-            <p>21,90£</p>
-        </div>
-        <div className="avis">
-            <p>3297 avis <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></p>
-        </div>
-      </div>
-      <div class="">
-      <button type="button" className="btn text-white" style={{width: "16.5rem", height: "2.5rem", background: "#007266"}}>Ajouter</button>
-      </div>
-    </div>
-  </div>
-
-  <div class="col-md-3">
-    <div class="card h-100">
-      <img src={mseptieme} class="card-img-top" alt="..."/>
-      <div class="card-body">
-        <h5 class="card-title">Les 2 Savons Surgras</h5>
-        <p class="card-text"><span>Duo (tres) solide</span></p>
-      </div>
-      <div className='best d-flex'>
-        <div className="monet ">
-            <p>10,90£</p>
-        </div>
-        <div className="avis">
-            <p>674 avis <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></p>
-        </div>
-      </div>
-      <div class="">
-      <button type="button" className="btn text-white" style={{width: "16.5rem", height: "2.5rem", background: "#007266"}}>Ajouter</button>
-      </div>
-    </div>
-  </div>
- 
-  
-  
- 
-  
-</div>
-            </div>
 
 
             <div className="row" style={{marginTop: "2rem"}}>
@@ -599,6 +371,9 @@ function TousProduits(props) {
 <p>                © 2023 - TOUS DROITS RÉSERVÉS - DESIGN & DÉVELOPPEMENT AGENCE PM
 </p>                </div>
           </div>
+
+
+          
             </div>
             
      

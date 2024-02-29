@@ -1,0 +1,39 @@
+.premier h2{
+    font-size: 50px;
+    line-height: 50px;
+    font-family: var(--font-heading-family);
+    font-weight: 500;
+}
+.premier p{
+    font-size: 13px;
+    line-height: 23px;
+    font-family: var(--font-heading-family);
+    letter-spacing: .26px;
+
+    
+}
+.groupeInput {
+    width: 35rem;
+    padding: 10px 20px;
+    color: #202020;
+    border: none;
+}
+.formule{
+    margin-left: 17rem;
+}
+.profite {
+    padding-top: 4rem;
+}
+.profite h3{
+    font-size: 50px;
+    line-height: 50px;
+    font-family: var(--font-heading-family);
+    font-weight: 500;
+}
+.coup p{
+    font-size: 50px;
+    line-height: 50px;
+    font-family: var(--font-heading-family);
+    font-weight: 500; 
+    margin-top: 4rem;
+}
