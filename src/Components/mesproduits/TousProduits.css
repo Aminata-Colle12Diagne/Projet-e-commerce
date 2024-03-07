@@ -11,11 +11,12 @@ color: #0000004d;
   padding-top: 4rem;
 }
 .best{
-    margin-left: 3px;
+    margin-left: 2.5px;
 }
 .avis{
   display: flex;
-    justify-content: flex-start;
+  padding-left: 3%;
+    /* justify-content: flex-start; */
 }
 .best p i{
     color: #ffc451;
@@ -34,9 +35,10 @@ color: #156a04;
 }
 .satisfaite{
     height: 1.5rem;
-    margin-left: 8rem;
+    width: 9rem;
+    
     margin-top: 1rem;
-    /* padding-top: 2rem; */
+    padding-top: -2rem;
 }
 .card img{
     background: #fef9f6;
@@ -119,13 +121,23 @@ font-size: 19px;
     font-size: 13px;
     }
     .containerdeux{
-        background-image: url("../assets/img/premiereImag.jpg");
+        background-image: url("../assets/img/premiereImag.webp");
         margin-top: 10rem;
         height: 15rem;
-        width: 100%;
+        background: cover;
             
        
     }
     .custom-card{
       height: 100%;
+    }
+    .card-body button{
+      display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10% 20% 9%;
+    font-family: var(--font-heading-family);
+    cursor: pointer;
+    transition: all .3s;
+    border-radius: 0;
     }

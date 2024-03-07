@@ -32,4 +32,80 @@
 .formules{
     margin: 2rem;
 }
+.pagination {
+    list-style: none;
+    padding: 0;
+    text-align: center;
+  }
   
+  .pagination li {
+    display: inline-block;
+    margin-right: 5px; /* Ajoutez un espace entre les éléments si nécessaire */
+  }
+  
+  .pagination a {
+    text-decoration: none;
+    border: none;
+    padding: 5px 10px; /* Ajoutez un espace intérieur pour améliorer l'apparence */
+  }
+  
+  .pagination a:hover {
+    background-color: #f0f0f0; /* Ajoutez une couleur de fond au survol si vous le souhaitez */
+  }
+  .contain-faq ::before, ::after{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+
+  }
+  .contain-faq{
+    font-family: Raleway, sans-serif;
+    width: 50%;
+    max-width: 80%;
+    min-width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .questions{
+    width: 90%;
+    height: auto;
+    margin: 5%;
+  }
+.faq-content{
+  margin-bottom: 10px;
+}
+.faq-dropdown{
+  border-bottom: 1px solide #ccc;
+}
+.faq-dropdown-header{
+  font-size: 20px;
+  font-weight: 700;
+  padding: 18px 0;
+  margin-bottom: 15px;
+  position: relative;
+  cursor: pointer;
+}
+.faq-dropdown-header h5{
+  font-weight: 500;
+  width: 95%;
+}
+.faq-icon{
+  border: 0px;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  position: absolute;
+  right: 10px;
+  top: 25px;
+}
+.faq-dropdown-body{
+  margin-bottom: 15px;
+  /* display: none; */
+}
+.faq-dropdown-body .open{
+  display: block;
+}
+.faq-icon .open{
+  transition: 0.3s ease;
+}

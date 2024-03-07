@@ -9,16 +9,185 @@ import mvisage8 from '../assets/img/visage8.jpg'
 import mvisage9 from '../assets/img/visage9.jpg'
 import mvisage10 from '../assets/img/visage10.jpg'
 import mfaq from '../assets/img/faq.webp'
+import { NavLink } from 'react-router-dom';
+import { addDoc, collection, getFirestore } from 'firebase/firestore';
+
 
 import './Visages.css';
 
 function Visages(props) {
+
+    const db = getFirestore();
+    const ajouterProduit = async(produit) =>{
+    try {
+      const docRef = await addDoc(collection(db, 'MesProduits'), produit);
+      console.log('Document written with ID: ', docRef.id);
+    
+    } catch (e) {
+      console.error('Error adding document: ', e);
+    
+    }
+    }
+    
+    const handleAddProductClick = (produit) => {
+      ajouterProduit(produit);
+    };
+    
+      const produitAjouter = [
+        {
+          imageUrl: mvisage3,
+          titre: 'Shanpoing Solide Naturel Peche du Verger',
+          description: 'Attention ca mousse',
+          prix: 10.90,
+          avis: 267,
+          note: 5,
+        },
+        {
+          imageUrl: mvisage4,
+          titre: 'Déodorant Roll-on Fraicheur 24h de coton',
+          description: 'Efficacite prouvee',
+          prix: 10.90,
+          avis: 955,
+          note: 5,
+        },
+        {
+          imageUrl: mvisage5,
+          titre: '2 Shampoing Solide Peche du verger & Liat amande',
+          description: "huiles vegetales nutrives",
+          prix: 19.90,
+          avis: 2311,
+          note: 5,
+        },
+        {
+          imageUrl: mvisage6,
+          titre: '3 Shanpiong Solde Naturels Cheveux Normaux',
+          description: "Attention ca mousse",
+          prix: 27.90,
+          avis: 2311,
+          note: 5,
+        },
+        {
+          imageUrl: mvisage7,
+          titre: 'Shampiong Solide Purfaint-Cheveux gras',
+          description: "La detox des cheveux gras",
+          prix: 10.90,
+          avis: 174,
+          note: 5,
+        },
+        {
+          imageUrl: mvisage8,
+          titre: 'Shampiong Purifiant Certifie Bio- Chaveux normaux a gras',
+          description: "La detox des cheveux gras",
+          prix: 10.90,
+          avis: 137,
+          note: 5,
+        },
+        {
+          imageUrl: mvisage9,
+          titre: 'Shampiong certifier Bio -Cheveux normaux a secs',
+          description: "Fini les cheveux de paille",
+          prix: 10.90,
+          avis: 120,
+          note: 5,
+        },
+        {
+          imageUrl: mvisage10,
+          titre: 'Routine solide - cheveux gras + porte savon x3',
+          description: "La detox des cheveux gras",
+          prix: 38.90,
+          avis: 174,
+          note: 5,
+        },
+        {
+          imageUrl: mvisage4,
+          titre: 'Shampiong Solide Naturel Fraicheur Tropicale',
+          description: "Attention ca mousse",
+          prix: 10.90,
+          avis: 32311,
+          note: 5,
+        },
+        {
+          imageUrl: mvisage7,
+          titre: 'Apres Shampiong solide certifie Bio',
+          description: "Pour une criniere de reve",
+          prix: 12.90,
+          avis: 262,
+          note: 5,
+        },
+        {
+            imageUrl: mvisage9,
+            titre: 'Apres Shampiong solide certifie Bio',
+            description: "Pour une criniere de reve",
+            prix: 12.90,
+            avis: 262,
+            note: 5,
+          },
+          {
+            imageUrl: mvisage7,
+            titre: 'Apres Shampiong solide certifie Bio',
+            description: "Pour une criniere de reve",
+            prix: 12.90,
+            avis: 262,
+            note: 5,
+          },
+          {
+            imageUrl: mvisage4,
+            titre: 'Apres Shampiong solide certifie Bio',
+            description: "Pour une criniere de reve",
+            prix: 12.90,
+            avis: 262,
+            note: 5,
+          },
+          {
+            imageUrl: mvisage5,
+            titre: 'Apres Shampiong solide certifie Bio',
+            description: "Pour une criniere de reve",
+            prix: 12.90,
+            avis: 262,
+            note: 5,
+          },
+          {
+            imageUrl: mvisage6,
+            titre: 'Apres Shampiong solide certifie Bio',
+            description: "Pour une criniere de reve",
+            prix: 12.90,
+            avis: 262,
+            note: 5,
+          },
+          {
+            imageUrl: mvisage9,
+            titre: 'Apres Shampiong solide certifie Bio',
+            description: "Pour une criniere de reve",
+            prix: 12.90,
+            avis: 262,
+            note: 5,
+          },
+          {
+            imageUrl: mvisage8,
+            titre: 'Apres Shampiong solide certifie Bio',
+            description: "Pour une criniere de reve",
+            prix: 12.90,
+            avis: 262,
+            note: 5,
+          },
+          {
+            imageUrl: mvisage3,
+            titre: 'Apres Shampiong solide certifie Bio',
+            description: "Pour une criniere de reve",
+            prix: 12.90,
+            avis: 262,
+            note: 5,
+          },
+    ]
+
+
+
     return (
      
              <div className="container-fluid" id='VISAGE' style={{ marginTop: "7rem" }}>
 
 <div className="row rowVisage" style={{ height: "7rem" }}>
-    <div className="naturel" style={{ marginLeft: "3rem", paddingTop: "2rem" }}>
+    <div className="naturel" style={{ paddingTop: "2rem" }}>
         <h2 className='h2  text-white'>Soins Visage Naturels</h2>
     </div>
 </div>
@@ -45,447 +214,60 @@ function Visages(props) {
 - Soins Visage
 - Soins Visage Naturels</strong></p>
 {/* row1 */}
-<div className="row row-cols-md-4 g-3 mb-3">
-                    <div className="col-md-3">
-                        <div class="card ">
-<img src={mvisage3} class="card-img-top" alt="..."/>
-<div className="satisfaite" style={{ background: "#c5e0d9", position: "absolute" }}>
-<p className='rem'>Satisfait ou rembourse</p>
+<div class="row  row-cols-md-4 g-2">
+                {produitAjouter.map((produit, index) => (
+        <div key={index} className="col-md-3" style={{ position: "relative" }}>
+          <div className="card  custom-card">
+            <img src={produit.imageUrl} className="card-img-top" alt={produit.titre} style={{ height: "40%" }}/>
+            <div className="satisfaite" style={{ background: "#c5e0d9", position: "absolute" }}>
+        <p >Satisfait ou rembourse</p>
+      </div>
+            <div className="card-body">
+              <hp className="card-title">{produit.titre}</hp>
+              <p className="card-text">{produit.description}</p>
+              <div className='best d-flex'>
+              <p className="card-text monet"> {produit.prix} €</p>
+              <p className="card-text avis"> {produit.avis}</p>
+              <p className="card-text">{Array.from({ length: produit.note }).map((_, index) => (
+    <i key={index} className="fa-solid fa-star"></i>
+  ))}
+  </p>
+              </div>
+              <button
+                type="button"
+                className="btn text-white"
+                style={{ width: "16.5rem", height: "2.5rem", background: "#007266" }}
+                onClick={() => handleAddProductClick(produit)}
+              >
+                Ajouter
+              </button>
+            </div>
+          </div>
+        </div>
+      ))}
 </div>
-<div class="card-body">
-<h5 class="card-title">Déodorant Solide Certifie Bio efficase 48h Fleur de Coton</h5>
-<p class="card-text"><span>Best-seller</span></p>
-</div>
-<div className='best d-flex'>
-<div className="monet ">
-    <p>11,80£</p>
-</div>
-<div className="avis">
-    <p>2630 avis <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></p>
-</div>
-</div>
-<div class="">
-<button type="button" className="btn text-white" style={{width: "16.5rem", height: "2.5rem", background: "#007266"}}>Ajouter</button>
-</div>
-</div>
-                    </div>
-                  
-                    
-                    <div className="col-md-3">
-                        <div class="card ">
-<img src={mvisage4} class="card-img-top" alt="..."/>
-<div className="satisfaite" style={{ background: "#c5e0d9", position: "absolute" }}>
-<p className='rem'>Satisfait ou rembourse</p>
-</div>
-<div class="card-body">
-<h5 class="card-title">Déodorant Solide Certifie Bio efficase 48h Fleur de Coton</h5>
-<p class="card-text"><span>Best-seller</span></p>
-</div>
-<div className='best d-flex'>
-<div className="monet ">
-    <p>11,80£</p>
-</div>
-<div className="avis">
-    <p>2630 avis <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></p>
-</div>
-</div>
-<div class="">
-<Link to="/"className="btn text-white" style={{width: "16.5rem", height: "2.5rem", background: "#007266"}}>Ajouter</Link>
-</div>
-</div>
-                    </div>
-                    <div className="col-md-3">
-                        <div class="card ">
-<img src={mvisage5} class="card-img-top" alt="..."/>
-<div className="satisfaite" style={{ background: "#c5e0d9", position: "absolute" }}>
-<p className='rem'>Satisfait ou rembourse</p>
-</div>
-<div class="card-body">
-<h5 class="card-title">Déodorant Solide Certifie Bio efficase 48h Fleur de Coton</h5>
-<p class="card-text"><span>Best-seller</span></p>
-</div>
-<div className='best d-flex'>
-<div className="monet ">
-    <p>11,80£</p>
-</div>
-<div className="avis">
-    <p>2630 avis <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></p>
-</div>
-</div>
-<div class="">
-<Link to="/"className="btn text-white" style={{width: "16.5rem", height: "2.5rem", background: "#007266"}}>Ajouter</Link>
-</div>
-</div>
-                    </div>
-                    <div className="col-md-3">
-                        <div class="card ">
-<img src={mvisage6} class="card-img-top" alt="..."/>
-<div className="satisfaite" style={{ background: "#c5e0d9", position: "absolute" }}>
-<p className='rem'>Satisfait ou rembourse</p>
-</div>
-<div class="card-body">
-<h5 class="card-title">Déodorant Solide Certifie Bio efficase 48h Fleur de Coton</h5>
-<p class="card-text"><span>Best-seller</span></p>
-</div>
-<div className='best d-flex'>
-<div className="monet ">
-    <p>11,80£</p>
-</div>
-<div className="avis">
-    <p>2630 avis <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></p>
-</div>
-</div>
-<div class="">
-<Link to="/"className="btn text-white" style={{width: "16.5rem", height: "2.5rem", background: "#007266"}}>Ajouter</Link>
-</div>
-</div>
-                    </div>
-                </div>
 
-                {/* row2 */}
-                <div className="row row-cols-md-4 g-3 mb-3">
-                    <div className="col-md-3">
-                        <div class="card ">
-<img src={mvisage7} class="card-img-top" alt="..."/>
-<div className="satisfaite" style={{ background: "#c5e0d9", position: "absolute" }}>
-<p className='rem'>Satisfait ou rembourse</p>
-</div>
-<div class="card-body">
-<h5 class="card-title">Déodorant Solide Certifie Bio efficase 48h Fleur de Coton</h5>
-<p class="card-text"><span>Best-seller</span></p>
-</div>
-<div className='best d-flex'>
-<div className="monet ">
-    <p>11,80£</p>
-</div>
-<div className="avis">
-    <p>2630 avis <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></p>
-</div>
-</div>
-<div class="">
-<button type="button" className="btn text-white" style={{width: "16.5rem", height: "2.5rem", background: "#007266"}}>Ajouter</button>
-</div>
-</div>
-                    </div>
-                  
-                    
-                    <div className="col-md-3">
-                        <div class="card ">
-<img src={mvisage8} class="card-img-top" alt="..."/>
-<div className="satisfaite" style={{ background: "#c5e0d9", position: "absolute" }}>
-<p className='rem'>Satisfait ou rembourse</p>
-</div>
-<div class="card-body">
-<h5 class="card-title">Déodorant Solide Certifie Bio efficase 48h Fleur de Coton</h5>
-<p class="card-text"><span>Best-seller</span></p>
-</div>
-<div className='best d-flex'>
-<div className="monet ">
-    <p>11,80£</p>
-</div>
-<div className="avis">
-    <p>2630 avis <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></p>
-</div>
-</div>
-<div class="">
-<Link to="/"className="btn text-white" style={{width: "16.5rem", height: "2.5rem", background: "#007266"}}>Ajouter</Link>
-</div>
-</div>
-                    </div>
-                    <div className="col-md-3">
-                        <div class="card ">
-<img src={mvisage9} class="card-img-top" alt="..."/>
-<div className="satisfaite" style={{ background: "#c5e0d9", position: "absolute" }}>
-<p className='rem'>Satisfait ou rembourse</p>
-</div>
-<div class="card-body">
-<h5 class="card-title">Déodorant Solide Certifie Bio efficase 48h Fleur de Coton</h5>
-<p class="card-text"><span>Best-seller</span></p>
-</div>
-<div className='best d-flex'>
-<div className="monet ">
-    <p>11,80£</p>
-</div>
-<div className="avis">
-    <p>2630 avis <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></p>
-</div>
-</div>
-<div class="">
-<Link to="/"className="btn text-white" style={{width: "16.5rem", height: "2.5rem", background: "#007266"}}>Ajouter</Link>
-</div>
-</div>
-                    </div>
-                    <div className="col-md-3">
-                        <div class="card ">
-<img src={mvisage10} class="card-img-top" alt="..."/>
-<div className="satisfaite" style={{ background: "#c5e0d9", position: "absolute" }}>
-<p className='rem'>Satisfait ou rembourse</p>
-</div>
-<div class="card-body">
-<h5 class="card-title">Déodorant Solide Certifie Bio efficase 48h Fleur de Coton</h5>
-<p class="card-text"><span>Best-seller</span></p>
-</div>
-<div className='best d-flex'>
-<div className="monet ">
-    <p>11,80£</p>
-</div>
-<div className="avis">
-    <p>2630 avis <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></p>
-</div>
-</div>
-<div class="">
-<Link to="/"className="btn text-white" style={{width: "16.5rem", height: "2.5rem", background: "#007266"}}>Ajouter</Link>
-</div>
-</div>
-                    </div>
-                </div>
-                {/* row3 */}
-                <div className="row row-cols-md-4 g-3 mb-3">
-                    <div className="col-md-3">
-                        <div class="card ">
-<img src={mvisage3} class="card-img-top" alt="..."/>
-<div className="satisfaite" style={{ background: "#c5e0d9", position: "absolute" }}>
-<p className='rem'>Satisfait ou rembourse</p>
-</div>
-<div class="card-body">
-<h5 class="card-title">Déodorant Solide Certifie Bio efficase 48h Fleur de Coton</h5>
-<p class="card-text"><span>Best-seller</span></p>
-</div>
-<div className='best d-flex'>
-<div className="monet ">
-    <p>11,80£</p>
-</div>
-<div className="avis">
-    <p>2630 avis <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></p>
-</div>
-</div>
-<div class="">
-<button type="button" className="btn text-white" style={{width: "16.5rem", height: "2.5rem", background: "#007266"}}>Ajouter</button>
-</div>
-</div>
-                    </div>
-                  
-                    
-                    <div className="col-md-3">
-                        <div class="card ">
-<img src={mvisage4} class="card-img-top" alt="..."/>
-<div className="satisfaite" style={{ background: "#c5e0d9", position: "absolute" }}>
-<p className='rem'>Satisfait ou rembourse</p>
-</div>
-<div class="card-body">
-<h5 class="card-title">Déodorant Solide Certifie Bio efficase 48h Fleur de Coton</h5>
-<p class="card-text"><span>Best-seller</span></p>
-</div>
-<div className='best d-flex'>
-<div className="monet ">
-    <p>11,80£</p>
-</div>
-<div className="avis">
-    <p>2630 avis <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></p>
-</div>
-</div>
-<div class="">
-<Link to="/"className="btn text-white" style={{width: "16.5rem", height: "2.5rem", background: "#007266"}}>Ajouter</Link>
-</div>
-</div>
-                    </div>
-                    <div className="col-md-3">
-                        <div class="card ">
-<img src={mvisage5} class="card-img-top" alt="..."/>
-<div className="satisfaite" style={{ background: "#c5e0d9", position: "absolute" }}>
-<p className='rem'>Satisfait ou rembourse</p>
-</div>
-<div class="card-body">
-<h5 class="card-title">Déodorant Solide Certifie Bio efficase 48h Fleur de Coton</h5>
-<p class="card-text"><span>Best-seller</span></p>
-</div>
-<div className='best d-flex'>
-<div className="monet ">
-    <p>11,80£</p>
-</div>
-<div className="avis">
-    <p>2630 avis <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></p>
-</div>
-</div>
-<div class="">
-<Link to="/"className="btn text-white" style={{width: "16.5rem", height: "2.5rem", background: "#007266"}}>Ajouter</Link>
-</div>
-</div>
-                    </div>
-                    <div className="col-md-3">
-                        <div class="card ">
-<img src={mvisage6} class="card-img-top" alt="..."/>
-<div className="satisfaite" style={{ background: "#c5e0d9", position: "absolute" }}>
-<p className='rem'>Satisfait ou rembourse</p>
-</div>
-<div class="card-body">
-<h5 class="card-title">Déodorant Solide Certifie Bio efficase 48h Fleur de Coton</h5>
-<p class="card-text"><span>Best-seller</span></p>
-</div>
-<div className='best d-flex'>
-<div className="monet ">
-    <p>11,80£</p>
-</div>
-<div className="avis">
-    <p>2630 avis <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></p>
-</div>
-</div>
-<div class="">
-<Link to="/"className="btn text-white" style={{width: "16.5rem", height: "2.5rem", background: "#007266"}}>Ajouter</Link>
-</div>
-</div>
-                    </div>
-                </div>
-                {/* row4 */}
-                <div className="row row-cols-md-4 g-3 mb-3">
-                    <div className="col-md-3">
-                        <div class="card ">
-<img src={mvisage7} class="card-img-top" alt="..."/>
-<div className="satisfaite" style={{ background: "#c5e0d9", position: "absolute" }}>
-<p className='rem'>Satisfait ou rembourse</p>
-</div>
-<div class="card-body">
-<h5 class="card-title">Déodorant Solide Certifie Bio efficase 48h Fleur de Coton</h5>
-<p class="card-text"><span>Best-seller</span></p>
-</div>
-<div className='best d-flex'>
-<div className="monet ">
-    <p>11,80£</p>
-</div>
-<div className="avis">
-    <p>2630 avis <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></p>
-</div>
-</div>
-<div class="">
-<button type="button" className="btn text-white" style={{width: "16.5rem", height: "2.5rem", background: "#007266"}}>Ajouter</button>
-</div>
-</div>
-                    </div>
-                  
-                    
-                    <div className="col-md-3">
-                        <div class="card ">
-<img src={mvisage8} class="card-img-top" alt="..."/>
-<div className="satisfaite" style={{ background: "#c5e0d9", position: "absolute" }}>
-<p className='rem'>Satisfait ou rembourse</p>
-</div>
-<div class="card-body">
-<h5 class="card-title">Déodorant Solide Certifie Bio efficase 48h Fleur de Coton</h5>
-<p class="card-text"><span>Best-seller</span></p>
-</div>
-<div className='best d-flex'>
-<div className="monet ">
-    <p>11,80£</p>
-</div>
-<div className="avis">
-    <p>2630 avis <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></p>
-</div>
-</div>
-<div class="">
-<Link to="/"className="btn text-white" style={{width: "16.5rem", height: "2.5rem", background: "#007266"}}>Ajouter</Link>
-</div>
-</div>
-                    </div>
-                    <div className="col-md-3">
-                        <div class="card ">
-<img src={mvisage9} class="card-img-top" alt="..."/>
-<div className="satisfaite" style={{ background: "#c5e0d9", position: "absolute" }}>
-<p className='rem'>Satisfait ou rembourse</p>
-</div>
-<div class="card-body">
-<h5 class="card-title">Déodorant Solide Certifie Bio efficase 48h Fleur de Coton</h5>
-<p class="card-text"><span>Best-seller</span></p>
-</div>
-<div className='best d-flex'>
-<div className="monet ">
-    <p>11,80£</p>
-</div>
-<div className="avis">
-    <p>2630 avis <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></p>
-</div>
-</div>
-<div class="">
-<Link to="/"className="btn text-white" style={{width: "16.5rem", height: "2.5rem", background: "#007266"}}>Ajouter</Link>
-</div>
-</div>
-                    </div>
-                    <div className="col-md-3">
-                        <div class="card ">
-<img src={mvisage10} class="card-img-top" alt="..."/>
-<div className="satisfaite" style={{ background: "#c5e0d9", position: "absolute" }}>
-<p className='rem'>Satisfait ou rembourse</p>
-</div>
-<div class="card-body">
-<h5 class="card-title">Déodorant Solide Certifie Bio efficase 48h Fleur de Coton</h5>
-<p class="card-text"><span>Best-seller</span></p>
-</div>
-<div className='best d-flex'>
-<div className="monet ">
-    <p>11,80£</p>
-</div>
-<div className="avis">
-    <p>2630 avis <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></p>
-</div>
-</div>
-<div class="">
-<Link to="/"className="btn text-white" style={{width: "16.5rem", height: "2.5rem", background: "#007266"}}>Ajouter</Link>
-</div>
-</div>
-                    </div>
-                </div>
-                {/* row5 */}
-                <div className="row row-cols-md-4 g-3 mb-6">
-                    <div className="col-md-3">
-                        <div class="card ">
-<img src={mvisage3} class="card-img-top" alt="..."/>
-<div className="satisfaite" style={{ background: "#c5e0d9", position: "absolute" }}>
-<p className='rem'>Satisfait ou rembourse</p>
-</div>
-<div class="card-body">
-<h5 class="card-title">Déodorant Solide Certifie Bio efficase 48h Fleur de Coton</h5>
-<p class="card-text"><span>Best-seller</span></p>
-</div>
-<div className='best d-flex'>
-<div className="monet ">
-    <p>11,80£</p>
-</div>
-<div className="avis">
-    <p>2630 avis <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></p>
-</div>
-</div>
-<div class="">
-<button type="button" className="btn text-white" style={{width: "16.5rem", height: "2.5rem", background: "#007266"}}>Ajouter</button>
-</div>
-</div>
-                    </div>
-                  
-                    
-                    <div className="col-md-3">
-                        <div class="card ">
-<img src={mvisage4} class="card-img-top" alt="..."/>
-<div className="satisfaite" style={{ background: "#c5e0d9", position: "absolute" }}>
-<p className='rem'>Satisfait ou rembourse</p>
-</div>
-<div class="card-body">
-<h5 class="card-title">Déodorant Solide Certifie Bio efficase 48h Fleur de Coton</h5>
-<p class="card-text"><span>Best-seller</span></p>
-</div>
-<div className='best d-flex'>
-<div className="monet ">
-    <p>11,80£</p>
-</div>
-<div className="avis">
-    <p>2630 avis <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></p>
-</div>
-</div>
-<div class="">
-<Link to="/"className="btn text-white" style={{width: "16.5rem", height: "2.5rem", background: "#007266"}}>Ajouter</Link>
-</div>
-</div>
-                    </div>
-                   
-                    
-                </div>
+         {/* rop pagination */}
+         <nav aria-label="Page navigation example" className="text-center">
+  <ul className="pagination text-center">
+    <li className="page-item">
+      <NavLink className="page-link" to="/CHEVEUX" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+      </NavLink>
+    </li>
+    <li className="page-item"><NavLink className="page-link" to="/VISAGE">1</NavLink></li>
+    <li className="page-item"><NavLink className="page-link" to="/PARRAINAGE">2</NavLink></li>
+    <li className="page-item"><NavLink className="page-link" to="/CORPS">3</NavLink></li>
+    <li className="page-item">
+      <NavLink className="page-link" to="/DENTIFRICE" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+      </NavLink>
+    </li>
+  </ul>
+</nav>
+
+
+
 
                 {/* row questions frequents */}
 <div className="row">

@@ -1,6 +1,6 @@
 import React from 'react';
-
-function Offrir(props) {
+// import './Contact.css'
+function Contact(props) {
     return (
         <div>
             
@@ -8,4 +8,4 @@ function Offrir(props) {
     );
 }
 
-export default Offrir;
+export default Contact;

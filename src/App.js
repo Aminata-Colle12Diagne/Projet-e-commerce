@@ -15,6 +15,10 @@ import SingUp from './Components/authentification/SingUp';
 import Help from './Components/help/Help';
 import Search from './Components/search/Search';
 import Abonne from './Components/abonne/Abonne';
+import Iconiques from './Components/offert/Iconiques'
+import Propos from './Components/propos/Propos';
+import Contact from './Components/contact/Contact';
+import Panier from './Components/pagne/Panier';
 
 
 function App() {
@@ -38,6 +42,10 @@ function App() {
         <Route path="/hepl" element={<Help />} />
         <Route path="/search" element={<Search />} />
         <Route path="/abonne" element={<Abonne/>} />
+        <Route path="/iconic" element={<Iconiques/>} />
+        <Route path="/propos" element={<Propos/>} />
+        <Route path="/contact" element={<Contact/>} />
+        <Route path="/panier" element={<Panier/>} />
     
 
       </Routes>

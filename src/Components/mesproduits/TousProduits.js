@@ -13,7 +13,7 @@ import monze from '../assets/img/onze.jpg'
 import mdoux from '../assets/img/doux.jpg'
 import mimages14 from '../assets/img/image14.jpg'
 import mimages15 from '../assets/img/images15.jpg'
-import { addDoc, collection, getFirestore } from 'firebase/firestore';
+import { addDoc, collection, doc, getFirestore, runTransaction } from 'firebase/firestore';
 import db from '../../firebaseConfig';
 // import fireBd from '../firebaseConfig'
 // import auth from '../firebaseConfig';
@@ -23,21 +23,38 @@ import db from '../../firebaseConfig';
 
 function TousProduits(props) {
 
-const db = getFirestore();
-const ajouterProduit = async(produit) =>{
-try {
-  const docRef = await addDoc(collection(db, 'MesProduits'), produit);
-  console.log('Document written with ID: ', docRef.id);
+// const db = getFirestore();
 
-} catch (e) {
-  console.error('Error adding document: ', e);
 
-}
-}
+// // ... (votre code existant)
 
-const handleAddProductClick = (produit) => {
-  ajouterProduit(produit);
-};
+const firestore = getFirestore();
+
+  const ajouterProduit = async (produit) => {
+    try {
+      const docRef = await addDoc(collection(firestore, 'MesProduits'), produit);
+      console.log('Document written with ID: ', docRef.id);
+
+      const panierRef = collection(firestore, 'Panier');
+      const panierDocRef = doc(panierRef, docRef.id);
+
+      await runTransaction(firestore, async (transaction) => {
+        const panierDocSnapshot = await transaction.get(panierDocRef);
+        const quantiteActuelle = panierDocSnapshot.exists() ? panierDocSnapshot.data().quantite : 0;
+
+        transaction.set(panierDocRef, { quantite: quantiteActuelle + 1 });
+      });
+
+    } catch (e) {
+      console.error('Error adding document: ', e);
+    }
+  }
+
+  const handleAddProductClick = (produit) => {
+    ajouterProduit(produit);
+  };
+
+
 
   const produitAjouter = [
     {
@@ -45,7 +62,7 @@ const handleAddProductClick = (produit) => {
       titre: 'Déodorant Solide Certifié Bio efficace 48h Fleur de Coton',
       description: '48h chrono',
       prix: 32.90,
-      avis: 3297,
+      avis: 329,
       note: 5,
     },
     {
@@ -58,7 +75,7 @@ const handleAddProductClick = (produit) => {
     },
     {
       imageUrl: mtroixieme,
-      titre: 'Soin Nettoyant Visage Solide',
+      titre: 'Soin Nettoyant Visage Solide Soin',
       description: "+27% d' hydratation",
       prix: 10.90,
       avis: 701,
@@ -66,7 +83,7 @@ const handleAddProductClick = (produit) => {
     },
     {
       imageUrl: mquatrieme,
-      titre: 'Soin Exfoliant Corps Solide',
+      titre: 'Soin Exfoliant Corps Solide Exfoliant ',
       description: "40 nuances de grains",
       prix: 10.90,
       avis: 701,
@@ -82,18 +99,18 @@ const handleAddProductClick = (produit) => {
     },
     {
       imageUrl: msixieme,
-      titre: '2 Shampionpoind Solide Fraicheur Trropical & Lait Amande',
+      titre: '2 Shampionpoind Solide Fraicheur Trropical & Lait ',
       description: "Attention ca marche",
       prix: 18.53,
-      avis: 2310,
+      avis: 231,
       note: 5,
     },
     {
       imageUrl: mseptieme,
       titre: 'Gel-Greme Visage Hydratant 50ml',
-      description: "+48% d'hydaratation immediate",
+      description: "+48% d'hydaratation imediate",
       prix: 16.90,
-      avis: 2615,
+      avis: 2611,
       note: 5,
     },
     {
@@ -114,10 +131,10 @@ const handleAddProductClick = (produit) => {
     },
     {
       imageUrl: mdixieme,
-      titre: 'Duo Soin Mains et levres',
+      titre: 'Duo Soin Mains et levres Mains soins',
       description: "Le duo de choc",
       prix: 12.90,
-      avis: 37,
+      avis: 370,
       note: 5,
     },
     // col 11
@@ -141,10 +158,10 @@ const handleAddProductClick = (produit) => {
     // col 13
     {
       imageUrl: mtroixieme,
-      titre: 'Duo Soin Mains et levres',
+      titre: 'Duo Soin Mains et levres Naturels',
       description: "Le duo de choc",
       prix: 12.90,
-      avis: 37,
+      avis: 370,
       note: 5,
     },
     // col 14
@@ -182,6 +199,11 @@ const handleAddProductClick = (produit) => {
       prix: 10.90,
       avis: 689,
       note: 5,
+      style: {
+        // Add your desired CSS styles here
+        color: 'red',
+        fontWeight: 'bold',
+      }
     },
     // col 18
     {
@@ -203,7 +225,7 @@ const handleAddProductClick = (produit) => {
         <div className='container-fluid produit fixed' id='TousProduits'>
 
 <div className="row containerdeux">
-<div className='tous' style={{marginLeft: "4rem", marginTop: "2rem"}}>
+<div className='tous' style={{ marginTop: "2rem"}}>
    <h2 className='text-white'>Tous les produits</h2>
    </div>
 </div>
@@ -216,26 +238,27 @@ const handleAddProductClick = (produit) => {
                 <div className="row">
       {produitAjouter.map((produit, index) => (
         <div key={index} className="col-md-3" style={{ position: "relative" }}>
-          <div className="card  custom-card">
-            <img src={produit.imageUrl} className="card-img-top" alt={produit.titre} style={{ objectFit: "cover", height: "50%" }}/>
+    <div className="card custom-card" style={{ height: "100%" }}>
+            <img src={produit.imageUrl} className="card-img-top" alt={produit.titre} style={{ objectFit: "cover", height: "40%" }}/>
             <div className="satisfaite" style={{ background: "#c5e0d9", position: "absolute" }}>
         <p >Satisfait ou rembourse</p>
       </div>
             <div className="card-body">
-              <hp className="card-title">{produit.titre}</hp>
-              <p className="card-text">{produit.description}</p>
+              <p className="card-title" >{produit.titre}</p>
+              <p className="card-text" >{produit.description}</p>
               <div className='best d-flex'>
               <p className="card-text monet"> {produit.prix} €</p>
               <p className="card-text avis"> {produit.avis}</p>
               <p className="card-text">{Array.from({ length: produit.note }).map((_, index) => (
-    <i key={index} className="fa-solid fa-star"></i>
+    <i key={index} className="fa-solid fa-star" style={{ fontSize: "13px"}}></i>
   ))}
   </p>
               </div>
               <button
                 type="button"
-                className="btn text-white"
-                style={{ width: "16.5rem", height: "2.5rem", background: "#007266" }}
+                className="btn text-white bouton"
+                style={{ width: "15rem", height: "2.5rem", background: "#007266", 
+              }}
                 onClick={() => handleAddProductClick(produit)}
               >
                 Ajouter
@@ -243,11 +266,8 @@ const handleAddProductClick = (produit) => {
             </div>
           </div>
         </div>
+        
       ))}
-
-
-
-      
     </div>
   
 
@@ -267,28 +287,28 @@ const handleAddProductClick = (produit) => {
             <div className="row categories" style={{marginTop: "1rem"}}>
             <div class="col g-2 image1">
           <div className="a text-center">
-              <a href="">Deodorants</a>
+              <a href="/DEODORANTS">Deodorants</a>
           </div>
             </div>
 
             <div class="col g-2 image2">
           <div className="a text-center">
-              <a href="">Cheveaux</a>
+              <a href="/CHEVEUX">Cheveaux</a>
           </div>
             </div>
             <div class="col g-2 image3">
           <div className="a text-center">
-              <a href="">Dentifrices</a>
+              <a href="/DENTIFRICES">Dentifrices</a>
           </div>
             </div>
             <div class="col g-2 image4">
           <div className="a  text-center">
-              <a href="">Visage</a>
+              <a href="/VISAGE">Visage</a>
           </div>
             </div>
             <div class="col g-2 image5">
           <div className="a text-center">
-              <a href="">Corps</a>
+              <a href="CORPS">Corps</a>
           </div>
             </div>
             </div>

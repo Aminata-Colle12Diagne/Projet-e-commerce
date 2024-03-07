@@ -6,3 +6,34 @@
 .comment input{
     margin-left: 25rem;
 }
+.mesbutton{
+  justify-content: flex-end;
+
+}
+.colpremier{
+  margin-left: 1rem;
+  border: 1px solid black;
+  padding: 0.667rem;
+}
+.aide{
+  border: 1px solid black;
+  width: 40%;
+  padding-top: 1%;
+  margin-left: 2rem;
+}
+.btn.active {
+  background-color: #007266; /* Remplacez "yourColor" par la couleur que vous souhaitez */
+  /* Autres styles */
+}
+.aide svg{
+  margin-left: 16rem;
+}
+/* .vide{
+  font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 24px;
+    padding: 16px 0;
+    color: #6A6A6A;
+} */
+  

@@ -1,13 +1,16 @@
 .imgdeodorant img :hover{
 background: #fff;
 }
-.rowDentifrice {
-    background-image: url("../assets/img/dent 11.jpg");
-    /* background-size: cover; Ajustez la taille de l'image pour couvrir complètement l'élément */
-    background-repeat: no-repeat; /* Évitez la répétition de l'image de fond */
-    background-position: center; /* Centrez l'image de fond */
-    height: 7rem; /* Ajustez la hauteur selon vos besoins */
+.rowDentifrice{
+    background-image: url("../assets/img/dentbackground.webp");
+    background-repeat: no-repeat;
+top: 0;
+left: 0;
+background-size: cover;
 }
+.my-custom-margin {
+    margin-bottom: 15%; /* Ajuster la valeur selon vos besoins */
+  }
 /* 
 .image-container {
     position: relative;

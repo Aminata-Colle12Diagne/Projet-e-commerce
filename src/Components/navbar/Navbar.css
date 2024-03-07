@@ -8,6 +8,9 @@
 .lesIconsNavbar{
     padding: 2;
 }
+.lesIconsNavbar Link i{
+  color:#007266 ;
+}
 .navpricipale a{
     color: black;
     font-size: 13px;
